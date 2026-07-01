@@ -33,7 +33,7 @@ You'll work with these areas:
 ## Instructions (pro-analytics-02)
 
 Follow the
-[step-by-step workflow guide](https://nwmgraspr.github.io/pro-analytics-02/workflow-b-apply-example-project/)
+[step-by-step workflow guide](https://denise.github.io/pro-analytics-02/workflow-b-apply-example-project/)
 to complete:
 
 1. Phase 1. **Start & Run**
@@ -89,7 +89,7 @@ code .
 
 These are listed for convenience.
 For best results, follow the detailed instructions in
-[pro-analytics-02 guide](https://nwmgraspr.github.io/pro-analytics-02/).
+[pro-analytics-02 guide](https://denise.github.io/pro-analytics-02/).
 
 ```shell
 uv self update
