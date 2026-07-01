@@ -1,6 +1,6 @@
 # bintel-01-intro
 
-[![Workflow Guide](https://img.shields.io/badge/Pro--Guide-pro--analytics--02-green)](https://nwmgraspr.github.io/pro-analytics-02/workflow-b-apply-example-project/)
+[![Workflow Guide](https://img.shields.io/badge/Pro--Guide-pro--analytics--02-green)](https://denise.github.io/pro-analytics-02/workflow-b-apply-example-project/)
 [![Python 3.14](https://img.shields.io/badge/python-3.14%2B-blue?logo=python)](./pyproject.toml)
 [![MIT](https://img.shields.io/badge/license-see%20LICENSE-yellow.svg)](./LICENSE)
 
