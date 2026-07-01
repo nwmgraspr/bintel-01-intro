@@ -2,7 +2,7 @@
 
 An example of loading and visualizing raw business data.
 
-Author: Denise Case
+Author: Ralph Massaquoi
 Date: 2026-06
 
 Process:
