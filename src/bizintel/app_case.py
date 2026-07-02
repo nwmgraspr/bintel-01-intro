@@ -303,11 +303,11 @@ df_sales["SaleAmount"] = pd.to_numeric(
 total_sales = df_sales["SaleAmount"].sum()
 
 LOG.info(f"Total Sales Revenue: ${total_sales:,.2f}")
-    LOG.info("========================")
-    LOG.info("ANALYST NOTES:")
-    LOG.info("Note any data quality issues.")
-    LOG.info("We will clean data later.")
-    LOG.info("========================")
+LOG.info("========================")
+LOG.info("ANALYST NOTES:")
+LOG.info("Note any data quality issues.")
+LOG.info("We will clean data later.")
+LOG.info("========================")
 
 
 # === DEFINE THE MAIN FUNCTION (WHERE THE MAGIC HAPPENS) ===
