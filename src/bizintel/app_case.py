@@ -379,6 +379,10 @@ def main() -> None:
         ylabel="Total Sales Amount ($)",
         palette="Purples_d",
     )
+
+    plt.xticks(rotation=45, ha="right")
+    plt.tight_layout()
+   
     LOG.info("CALL a function to summarize the datasets........")
     summarize(df_customers, df_products, df_sales)
 
