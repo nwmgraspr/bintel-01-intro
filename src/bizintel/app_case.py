@@ -295,19 +295,6 @@ def summarize(
     LOG.info(f"Customers:  {cust_rows} rows, {cust_cols} columns")
     LOG.info(f"Products:   {prod_rows} rows, {prod_cols} columns")
     LOG.info(f"Sales:      {sale_rows} rows, {sale_cols} columns")
-df_sales["SaleAmount"] = pd.to_numeric(
-    df_sales["SaleAmount"],
-    errors="coerce",
-)
-
-total_sales = df_sales["SaleAmount"].sum()
-
-LOG.info(f"Total Sales Revenue: ${total_sales:,.2f}")
-LOG.info("========================")
-LOG.info("ANALYST NOTES:")
-LOG.info("Note any data quality issues.")
-LOG.info("We will clean data later.")
-LOG.info("========================")
 
 
 # === DEFINE THE MAIN FUNCTION (WHERE THE MAGIC HAPPENS) ===
@@ -338,6 +325,19 @@ def main() -> None:
     df_customers = load_data(CUSTOMERS_FILE, "customers")
     df_products = load_data(PRODUCTS_FILE, "products")
     df_sales = load_data(SALES_FILE, "sales")
+    df_sales["SaleAmount"] = pd.to_numeric(
+        df_sales["SaleAmount"],
+        errors="coerce",
+    )
+
+    total_sales = df_sales["SaleAmount"].sum()
+
+    LOG.info(f"Total Sales Revenue: ${total_sales:,.2f}")
+    LOG.info("========================")
+    LOG.info("ANALYST NOTES:")
+    LOG.info("Note any data quality issues.")
+    LOG.info("We will clean data later.")
+    LOG.info("========================")
 
     LOG.info("CALL a function to get sales by region........")
     df_region = sales_by_region(df_customers, df_sales)
