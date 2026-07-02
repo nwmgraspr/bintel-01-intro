@@ -207,6 +207,51 @@ def sales_by_category(
     return df_category
 
 
+# === Technical Modification Section
+
+def sales_by_product(
+    df_products: pd.DataFrame,
+    df_sales: pd.DataFrame,
+) -> pd.DataFrame:
+    """Aggregate total sales amount by product.
+
+    Args:
+        df_products: Products DataFrame with ProductID and ProductName.
+        df_sales: Sales DataFrame with ProductID and SaleAmount.
+
+    Returns:
+        DataFrame with ProductName and SaleAmount columns,
+        sorted by SaleAmount descending.
+    """
+    LOG.info("Aggregating sales by product")
+
+    df_sales = df_sales.copy()
+
+    df_sales["SaleAmount"] = pd.to_numeric(
+        df_sales["SaleAmount"],
+        errors="coerce",
+    )
+
+    df_merged = df_sales.merge(
+        df_products[["ProductID", "ProductName"]],
+        on="ProductID",
+        how="left",
+    )
+
+    grouped = (
+        df_merged.groupby("ProductName")["SaleAmount"]
+        .sum()
+        .reset_index()
+        .sort_values("SaleAmount", ascending=False)
+    )
+
+    top_product = grouped.iloc[0]["ProductName"]
+    top_sales = grouped.iloc[0]["SaleAmount"]
+
+    LOG.info(f"  Top product: {top_product} (${top_sales:,.2f})")
+
+    return grouped
+
 # === Section 2.3 DEFINE A SUMMARIZE FUNCTION ===
 
 # Define a reusable function that takes
@@ -250,7 +295,14 @@ def summarize(
     LOG.info(f"Customers:  {cust_rows} rows, {cust_cols} columns")
     LOG.info(f"Products:   {prod_rows} rows, {prod_cols} columns")
     LOG.info(f"Sales:      {sale_rows} rows, {sale_cols} columns")
+df_sales["SaleAmount"] = pd.to_numeric(
+    df_sales["SaleAmount"],
+    errors="coerce",
+)
 
+total_sales = df_sales["SaleAmount"].sum()
+
+LOG.info(f"Total Sales Revenue: ${total_sales:,.2f}")
     LOG.info("========================")
     LOG.info("ANALYST NOTES:")
     LOG.info("Note any data quality issues.")
@@ -314,7 +366,19 @@ def main() -> None:
         ylabel="Total Sales Amount ($)",
         palette="Greens_d",
     )
+    LOG.info("CALL a function to get sales by product........")
+    df_product = sales_by_product(df_products, df_sales)
 
+    LOG.info("CALL a function to plot sales by product........")
+    plot_bar(
+        df=df_product,
+        x="ProductName",
+        y="SaleAmount",
+        title="Total Sales by Product",
+        xlabel="Product",
+        ylabel="Total Sales Amount ($)",
+        palette="Purples_d",
+    )
     LOG.info("CALL a function to summarize the datasets........")
     summarize(df_customers, df_products, df_sales)
 
