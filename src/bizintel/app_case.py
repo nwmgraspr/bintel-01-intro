@@ -369,19 +369,18 @@ def main() -> None:
     LOG.info("CALL a function to get sales by product........")
     df_product = sales_by_product(df_products, df_sales)
 
+    df_product = df_product.head(10)  # keep top 10 products
+
     LOG.info("CALL a function to plot sales by product........")
     plot_bar(
-        df=df_product,
-        x="ProductName",
-        y="SaleAmount",
-        title="Total Sales by Product",
-        xlabel="Product",
-        ylabel="Total Sales Amount ($)",
-        palette="Purples_d",
+    df=df_product,
+    x="SaleAmount",
+    y="ProductName",
+    title="Top 10 Products by Sales",
+    xlabel="Total Sales Amount ($)",
+    ylabel="Product",
+    palette="Purples_d",
     )
-
-    plt.xticks(rotation=45, ha="right")
-    plt.tight_layout()
    
     LOG.info("CALL a function to summarize the datasets........")
     summarize(df_customers, df_products, df_sales)
