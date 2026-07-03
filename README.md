@@ -181,6 +181,8 @@ Replace these placeholders with screenshots from your own project run:
 
 ![Total Sales by Product Category](./docs/images/Figure_2.png)
 
+![Total Sales by Product](./docs/images/Figure_3.png)
+
 ## Project Documentation
 
 Additional project instructions, terms, and notes:
