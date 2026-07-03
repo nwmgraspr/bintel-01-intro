@@ -1,4 +1,4 @@
-"""app_case.py - example.
+"""app_mod_case.py - example.
 
 An example of loading and visualizing raw business data.
 
@@ -17,7 +17,7 @@ Data Source:
 
 Terminal command to run this file from the root project folder:
 
-uv run python -m bizintel.app_case
+uv run python -m bizintel.app_mod_case
 
 OBS:
   Don't edit this file - it should remain a working example.
